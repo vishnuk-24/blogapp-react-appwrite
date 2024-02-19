@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import Button from '../Button'
-import Input from './Input'
+import Input from '../Input'
 import RTE from '../RTE'
 import Select from '../Select'
 import appwriteService from '../../appwrite/config.js'
@@ -10,7 +10,7 @@ import { Navigate, useNavigate } from 'react-router-dom'
 
 
 
-function PostForm({ post }) {
+export default function PostForm({ post }) {
   const {register, handleSubmit, watch, setValue, control, getValues} = useForm({
     defaultValues: {
       title: post?.title || '',
@@ -49,7 +49,7 @@ function PostForm({ post }) {
           }
         }
     }
-  }
+  }}
 
   const slugTransform = useCallback((value) => {
     if (value && typeof value === 'string') return value.trim().toLowerCase().replace(/[^a-zA-Z\d\s]+/g, '-').replace(/\s/g, "-")
@@ -129,5 +129,3 @@ function PostForm({ post }) {
     </form>
   )
 }
-
-export default PostForm
