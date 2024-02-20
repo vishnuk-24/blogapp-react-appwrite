@@ -17,8 +17,10 @@ function Login() {
   const login = async (data) => {
     setError("");
 
+    console.log("data", data);
     try {
       const session = await authService.login(data);
+      console.log("session", session);
       if (session) {
         const userData = await authService.getCurrentUser();
 
@@ -28,6 +30,7 @@ function Login() {
         }
       }
     } catch (error) {
+      console.log("error", error);
       setError(error.message);
     }
   };
